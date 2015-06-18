@@ -1,4 +1,4 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
         case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
@@ -6,7 +6,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
     }
 };
+if (typeof __metadata !== "function") __metadata = function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var angular2_1 = require('angular2/angular2');
+var FriendsService = (function () {
+    function FriendsService() {
+        this.names = ["Alice", "Aarav", "Martín", "Shannon", "Ariana", "Kai"];
+    }
+    return FriendsService;
+})();
 var DisplayComponent = (function () {
     function DisplayComponent(friendsService) {
         this.myName = "Alice";
@@ -15,19 +24,14 @@ var DisplayComponent = (function () {
     DisplayComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app',
-            injectables: [FriendsService]
+            appInjector: [FriendsService]
         }),
         angular2_1.View({
-            templateUrl: './templates/app.html',
+            templateUrl: './template/app.html',
             directives: [angular2_1.NgFor, angular2_1.NgIf]
-        })
+        }), 
+        __metadata('design:paramtypes', [FriendsService])
     ], DisplayComponent);
     return DisplayComponent;
-})();
-var FriendsService = (function () {
-    function FriendsService() {
-        this.names = ["Alice", "Aarav", "Martín", "Shannon", "Ariana", "Kai"];
-    }
-    return FriendsService;
 })();
 angular2_1.bootstrap(DisplayComponent);

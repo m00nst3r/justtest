@@ -1,12 +1,18 @@
 import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
 
+class FriendsService{
+ names: Array<string>;
+ constructor(){
+  this.names = ["Alice", "Aarav", "Martín", "Shannon", "Ariana", "Kai"];
+ }
+}
 
 @Component({
  selector: 'my-app',
- injectables: [FriendsService]
+ appInjector: [FriendsService]
 })
 @View({
- templateUrl: './templates/app.html',
+ templateUrl: './template/app.html',
  directives: [NgFor, NgIf]
 })
 
@@ -17,13 +23,6 @@ class DisplayComponent{
  constructor(friendsService: FriendsService){
   this.myName = "Alice";
   this.names = friendsService.names;
- }
-}
-
-class FriendsService{
- names: Array<string>;
- constructor(){
-  this.names = ["Alice", "Aarav", "Martín", "Shannon", "Ariana", "Kai"];
  }
 }
 
