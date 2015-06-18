@@ -1,4 +1,3 @@
-/// <reference path="typings/angular2/angular2.d.ts" />
 import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
 
 class FriendsService{
